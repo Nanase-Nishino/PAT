@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<algorithm>
+using namespace std;
+
+
+struct unit
+{
+	int grade;
+	string name;
+	string code;
+};
+int main()
+{
+	int n;
+	cin >> n;
+	vector<unit> v(n);
+	for (int i = 0; i < n; i++)
+	  cin >> v[i].name >> v[i].code >> v[i].grade;
+	unit max, min;
+	max.grade = 0;
+	min.grade = 101;
+	for (auto x : v)
+	{
+		if (x.grade > max.grade)
+			max = x;
+	}
+	for (auto x : v)
+	{
+		if (x.grade < min.grade)
+			min = x;
+	}
+	cout << max.name << " " << max.code << endl;
+	cout << min.name << " " << min.code << endl;
+	system("pause");
+	return 0;
+}
+
+

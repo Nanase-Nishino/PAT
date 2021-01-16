@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<iostream>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int x, y;
+	cin >> x >> y;
+	string s = to_string(x * y);
+	reverse(s.begin(), s.end());
+	cout << stoi(s) << '\n';
+	
+	system("pause");
+	return 0;
+}

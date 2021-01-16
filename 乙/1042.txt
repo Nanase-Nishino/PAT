@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	string s;
+	getline(cin, s);
+	int N = s.size();
+	for (int i = 0; i < N; i++)
+	{
+		s[i] = tolower(s[i]);
+	}
+	vector<int> v(26,0);
+	for (int i = 0; i < N; i++)
+	{
+		if (islower(s[i]))
+			v[s[i] - 'a']++;
+	}
+
+	int max = v[0], t = 0;
+	for (int i = 1; i < 26; i++)
+	{
+		if (v[i] > max)
+		{
+			max = v[i];
+			t = i;
+		}
+	}
+	cout << char(t+'a') << " " << max << '\n';
+
+	
+
+	
+
+	system("pause");
+	return 0;
+}

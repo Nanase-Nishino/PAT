@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+vector<string> low{ "tret","jan","feb","mar","apr","may","jun","jly","aug","sep","oct","nov","dec" };
+vector<string> up{ "#####","tam","hel","maa","huh","tou","kes","hei","elo","syy","lok","mer","jou" };
+int len;
+string s;
+void fun1(string s)//数字转火星文
+{
+	stringstream ss;
+	int x;
+	ss << s;
+	ss >> x;
+
+	if (x / 13)
+		cout << up[x / 13];
+	if ((x / 13) && (x % 13))
+		cout << " ";
+	if ((x % 13 || x == 0))
+		cout << low[x % 13];
+}
+
+void fun2()//火星文转数字
+{
+	int t1 = 0, t2 = 0;
+	string s1 = s.substr(0, 3), s2;
+	if (len > 4)
+		s2 = s.substr(4, 3);
+	for (int j = 1; j < 13; j++)
+	{
+		if (s1 == low[j] || s2 == low[j])
+			t2 = j;
+		if (s1 == up[j])
+			t1 = j;
+	}
+	cout << t1 * 13 + t2;
+}
+
+int main()
+{
+	//ios::sync_with_stdio(false);
+	int N;
+	cin >> N;
+	getchar();
+	for (int i = 0; i < N; i++)
+	{
+		getline(cin, s);
+		len = s.size();
+		if (isdigit(s[0]))
+			fun1(s);
+		else
+			fun2();
+		cout<<'\n';
+	}
+	system("pause");
+	return 0;
+}

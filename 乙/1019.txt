@@ -1,0 +1,70 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+int stringToInt(string& s)
+{
+	stringstream ss;
+	ss << s;
+	int res=0;
+	ss >> res;
+	return res;
+}
+string intToString(int& s)
+{
+	stringstream ss;
+	ss << s;
+	string res;
+	ss >> res;
+	return res;
+}
+int main()
+{
+	string s, a;
+	cin >> s;
+	while (s.size() < 4)
+		s.insert(0, "0");
+	a = s;
+	sort(a.rbegin(), a.rend());//string逆向排序 非递增排序
+	sort(s.begin(), s.end());
+	if (a == s)
+		cout << setw(4) << setfill('0') << s << " - " << setw(4) << setfill('0') << s << " = 0000";
+	else
+	{
+		int x1, x2;
+		x1 = stringToInt(a);
+		x2 = stringToInt(s);
+		while (x1 - x2 != 6174)
+		{
+			cout << setw(4) << setfill('0') << x1 << " - " << setw(4) << setfill('0') << x2 << " = " << setw(4) << setfill('0') <<x1 - x2 << '\n';
+			int x3 = x1 - x2;
+			if (x3 < 1000)
+				x3 = x3 * 10;
+			string s1 = intToString(x3);
+			string s2 = s1;
+			sort(s1.rbegin(), s1.rend());//非递增
+			sort(s2.begin(), s2.end());//非递减
+			x1 = stringToInt(s1);
+			x2 = stringToInt(s2);
+		}
+		cout << setw(4) << setfill('0') << x1 << " - " << setw(4) << setfill('0') << x2 << " = " << 6174 << '\n';
+	}
+	
+
+
+
+	system("pause");
+	return 0;
+}

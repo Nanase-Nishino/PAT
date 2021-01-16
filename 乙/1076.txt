@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<iostream>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+//输入有一定问题 应该没有按行输入
+int main()
+{
+	ios::sync_with_stdio(false);
+	string s;
+	while (cin >> s)
+	{
+		if (s.size() == 3 && s[2] == 'T')
+			cout << s[0] - 'A' + 1;
+	}
+	cout << '\n';
+	
+	system("pause");
+	return 0;
+}

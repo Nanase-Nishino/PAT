@@ -1,0 +1,64 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N;
+	cin >> N;
+	vector<int> a(N), b(N);
+	for (int i=0;i<N;i++)
+		cin >> a[i];
+	for (int i = 0; i < N; i++)
+		cin >> b[i];
+
+	int i, j;
+	for ( i = 0; i < N - 1 && b[i] <= b[i + 1]; i++);
+	for (j = i + 1; a[j] == b[j] && j < N; j++);
+	if (j == N)
+	{
+		cout << "Insertion Sort" << '\n';
+		sort(a.begin(), a.begin() + i + 2);
+	}
+	else
+	{
+		cout << "Merge Sort" << '\n';
+		int k = 1, flag = 1;
+		while (flag)
+		{
+			flag = 0;
+			for (i = 0; i < N; i++)
+				if (a[i] != b[i])
+					flag = 1;
+			k = k * 2;
+			for (i = 0; i < N / k; i++)
+				sort(a.begin() + i * k, a.begin() + (i + 1) * k);
+			sort(a.begin() + N / k * k, a.begin() + N);
+		}
+	}
+	for (i = 0; i < N; i++)
+	{
+		if (i != 0)
+			cout << " ";
+		cout << a[i];
+	}
+	cout << '\n';
+
+	system("pause");
+	return 0;
+}

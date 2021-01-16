@@ -1,0 +1,58 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+int main()
+{
+	string A, B;
+	char DA, DB;
+	
+	int res;
+	cin >> A >> DA >> B >> DB;
+
+	int stepA = 0, stepB = 0;
+	for (int i = 0; i < A.size(); i++)
+	{
+		if (A[i] == DA)
+			stepA++;
+	}
+	for (int i = 0; i < B.size(); i++)
+	{
+		if (B[i] == DB)
+			stepB++;
+	}
+	
+	int da = DA - '0';
+	int db = DB - '0';
+	for (int i = 0; i < stepA-1; i++)
+	{
+		da = (da * 10 + DA - '0');
+	}
+	for (int i = 0; i < stepB-1; i++)
+	{
+		db = (db * 10 + DB - '0');
+	}
+	if (stepA == 0 && stepB == 0)
+		cout << 0 << '\n';
+	else if (stepA == 0 && stepB != 0)
+		cout << db << '\n';
+	else if (stepA != 0 && stepB == 0)
+		cout << da << '\n';
+	else
+		cout << da + db << '\n';
+	
+
+	system("pause");
+	return 0;
+}

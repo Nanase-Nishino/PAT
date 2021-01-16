@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N;
+	cin >> N;
+
+	vector<int> v(100,0);
+	for (int i = 0; i < N; i++)
+	{
+		int x;
+		cin >> x;
+		v[x]++;
+	}
+
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		int x;
+		cin >> x;
+		if (i)
+			cout << " ";
+		cout << v[x];
+	}
+	cout << '\n';
+
+	system("pause");
+	return 0;
+}

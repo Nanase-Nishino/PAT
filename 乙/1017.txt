@@ -1,0 +1,36 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+int main()
+{
+	string s;
+	int d;
+	cin >> s >> d;
+	int n = s.size();
+	int mod = (s[0] - '0') % d;
+	int div = (s[0] - '0') / d;
+	if (div != 0 || n == 1)
+		cout << div;
+	for (int i = 1; i < n; i++)
+	{
+		div = (mod * 10 + s[i] - '0') / d;
+		mod = (mod * 10 + s[i] - '0') % d;
+		cout << div;
+	}
+	cout << " " << mod << '\n';
+
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,44 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	string bad, s;
+	getline(cin, bad);
+	getline(cin, s);
+	int n = s.size();
+	for (int i = 0; i < n; i++)
+	{
+		if (s[i] >= 'A' && s[i] <= 'Z')
+		{
+			if (bad.find("+") == string::npos && bad.find(s[i]) == string::npos)
+				cout << s[i];
+		}
+		else if (s[i] >= 'a' && s[i] <= 'z')
+		{
+			if (bad.find(s[i] - 32) == string::npos)
+				cout << s[i];
+		}
+		else if (bad.find(s[i]) == string::npos)
+			cout << s[i];
+	}
+
+
+	system("pause");
+	return 0;
+}

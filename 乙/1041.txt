@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+struct stu
+{
+	string id;
+	int b;
+}v[1001];
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int x;
+		stu X;
+		cin >> X.id >> x >> X.b;
+		v[x] = X;
+	}
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int x;
+		cin >> x;
+		cout << v[x].id << " " << v[x].b << '\n';
+	}
+	
+
+	system("pause");
+	return 0;
+}

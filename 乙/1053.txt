@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<iostream>
+#include<cctype>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N, D, a1 = 0, b1 = 0;
+	double e;
+	cin >> N >> e >> D;
+	for (int i = 0; i < N; i++)
+	{
+		int K, day=0;
+		cin >> K;
+		for (int j = 0; j < K; j++)
+		{
+			double x;
+			cin >> x;
+			if (x < e)
+				day++;
+		}
+		if (day > (K / 2))
+		{
+			if (K > D)
+				b1++;
+			else
+				a1++;
+		}
+	}
+	cout << setiosflags(ios::fixed) << setprecision(1);
+	cout << a1 * 100.0 / N << "% " << b1 * 100.0 / N << "%" << '\n';
+
+	system("pause");
+	return 0;
+}

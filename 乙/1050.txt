@@ -1,0 +1,93 @@
+//碰壁法
+#include<stdio.h>
+#include<iostream>
+#include<cctype>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	
+	int N,m,n;
+	cin >> N;
+	int x = sqrt(N);
+	for (int i = x; i >= 1; i--)
+	{
+		if (N % i == 0)
+		{
+			m = N / i;
+			n = i;
+			break;
+		}
+	}
+	priority_queue<int, vector<int>, less<int>> q;//less降序
+	vector<vector<int>> res(m, vector<int>(n,0));
+	for (int i = 0; i < N; i++)
+	{
+		int x;
+		cin >> x;
+		q.push(x);
+	}
+	int i = 0, j = 0;
+	while (!q.empty())
+	{
+		while (j < n && !res[i][j]&&!q.empty())
+		{
+			res[i][j++] = q.top();
+			q.pop();
+		}
+		j--;
+		i++;
+		while (i < m && !res[i][j]&&!q.empty())
+		{
+			res[i++][j] = q.top();
+			q.pop();
+		}
+		i--;
+		j--;
+		while (j >= 0 && !res[i][j]&&!q.empty())
+		{
+			res[i][j--] = q.top();
+			q.pop();
+		}
+		j++;
+		i--;
+		while (i >= 0 && !res[i][j]&&!q.empty())
+		{
+			res[i--][j] = q.top();
+			q.pop();
+		}
+		i++;
+		j++;
+	}
+	for(int i=0;i<m;i++)
+		for (int j = 0; j < n; j++)
+		{
+			if (j != 0)
+				cout << " ";
+			cout << res[i][j];
+			if (j == n - 1)
+				cout << '\n';
+		}
+
+	
+	
+	system("pause");
+	return 0;
+}

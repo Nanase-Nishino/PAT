@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<algorithm>
+#include<set>
+using namespace std;
+
+//cmp
+/*bool cmp(int a, int b)
+{
+	return a > b;
+}
+*/
+
+int main()
+{
+	int x;
+	cin >> x;
+	if (x == 0)
+		return 0;
+	vector<int> v;
+	string s;
+	while (x > 9)
+	{
+		v.push_back(x % 10);
+		x = x / 10;
+	}
+	v.push_back(x);
+	if (v.size() == 3)
+	{
+		for (int i = 0; i < v[v.size()-1]; i++)
+			s += "B";
+		v.pop_back();
+	}
+	if (v.size() == 2)
+	{
+		if (v[v.size() - 1] != 0)	
+		  for (int i = 0; i < v[v.size()-1]; i++)
+			s += "S";
+		v.pop_back();
+	}
+	if (v[v.size() - 1] == 0)
+	{
+		cout << s << endl;
+		return 0;
+	}
+	int num = 1;
+	int i = 2;
+	int f = v[v.size()-1];
+	while (f >= i)
+	{
+		num = num * 10 + i;
+		i++;
+	}
+	stringstream ss;
+	string temp;
+	ss << num;
+	ss >> temp;
+	s += temp;
+	cout << s << endl;
+
+	system("pause");
+	return 0;
+}

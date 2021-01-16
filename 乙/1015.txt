@@ -1,0 +1,70 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+struct stu
+{
+	int id;
+	int a;
+	int b;
+	int flag;
+};
+
+bool cmp(stu& x, stu& y)
+{
+	if (x.flag != y.flag)
+		return x.flag < y.flag;
+	else if (x.a + x.b != y.a + y.b)
+		return x.a + x.b > y.a + y.b;
+	else if (x.a != y.a)
+		return x.a > y.a;
+	else
+		return x.id < y.id;
+}
+
+vector<stu> v;
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N, L, H; stu X;
+	int M = 0;
+	cin >> N >> L >> H;
+	
+	for (int i = 0; i < N; i++)
+	{
+		cin >> X.id >> X.a >> X.b;
+		if (X.a >= L && X.b >= L)
+		{
+			if (X.a >= H && X.b >= H)
+				X.flag = 1;
+			else if (X.a >= H && X.b < H)
+				X.flag = 2;
+			else if (X.a < H && X.b < H && X.a >= X.b)
+				X.flag = 3;
+			else
+				X.flag = 4;
+			M += 1;
+			v.push_back(X);
+		}
+	}
+	sort(v.begin(), v.end(), cmp);
+	cout << M << '\n';
+	for (auto x : v)
+		cout << x.id << " " << x.a << " " << x.b << '\n';
+	
+	system("pause");
+	return 0;
+}
+
+

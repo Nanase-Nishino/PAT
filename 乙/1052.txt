@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<iostream>
+#include<cctype>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	vector<vector<string>> v;
+	for (int i = 0; i < 3; i++)
+	{
+		string s;
+		vector<string> row;
+		getline(cin, s);
+		for (int j = 0; j < s.size(); j++)
+		{
+			if (s[j] == '[')
+			{
+				string tem;
+				int k = j + 1;
+				while (s[k] != ']')
+				{
+					tem += s[k];
+					k++;
+				}
+				row.push_back(tem);
+				j = k;
+			}
+		}
+		v.push_back(row);
+	}
+	int N;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int a, b, c, d, e;
+		cin >> a >> b >> c >> d >> e;
+		if (a > v[0].size() || b > v[1].size() || c > v[2].size() || d > v[1].size() || e > v[0].size() || a < 1 || b < 1 || c < 1 || d < 1 || e < 1)
+		{
+			cout << "Are you kidding me? @\\/@" << '\n';
+			continue;
+		}
+		cout << v[0][a - 1] << "(" << v[1][b - 1] << v[2][c - 1] << v[1][d - 1] << ")" << v[0][e - 1] << '\n';
+	}
+
+	system("pause");
+	return 0;
+}

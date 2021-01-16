@@ -1,0 +1,68 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+long long a, b, c, d;
+long long gcd(long long t1, long long t2)
+{
+	return t2 == 0 ? t1 : gcd(t2, t1 % t2);//最大公约数
+}
+
+void func(long long m, long long n)
+{
+	if (m * n == 0)
+	{
+		n == 0 ? cout << "Inf" : cout << "0";
+		return;
+	}
+	bool flag = ((m > 0 && n < 0) || (m < 0 && n>0));
+	m = abs(m);
+	n = abs(n);
+	long long x = m / n;//取整数
+	if (flag)
+		cout << "(-";
+	if (x != 0)
+		cout << x;
+	if (m % n == 0)
+	{
+		if (flag)
+			cout << ")";
+		return;
+	}
+	if (x != 0)
+		cout << " ";
+	m = m - x * n;
+	long long t = gcd(m, n);
+	m = m / t;
+	n = n / t;
+	cout << m << "/" << n;
+	if (flag)
+		cout << ")";
+	
+}
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	
+	scanf("%lld/%lld %lld/%lld", &a, &b, &c, &d);
+	func(a, b); cout << " + "; func(c, d); cout << " = "; func(a * d + b * c, b * d); cout << '\n';
+	func(a, b); cout << " - "; func(c, d); cout << " = "; func(a * d - b * c, b * d); cout << '\n';
+	func(a, b); cout << " * "; func(c, d); cout << " = "; func(a * c , b * d); cout << '\n';
+	func(a, b); cout << " / "; func(c, d); cout << " = "; func(a * d , b * c); cout << '\n';
+
+	system("pause");
+	return 0;
+}

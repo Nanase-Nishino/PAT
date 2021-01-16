@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int payGalleon, paySickle, payKnut;
+	int actGalleon, actSickle, actKnut;
+	int finGalleon=0, finSickle=0, finKnut=0;
+	scanf_s("%d.%d.%d %d.%d.%d", &payGalleon, &paySickle, &payKnut, &actGalleon, &actSickle, &actKnut);
+	if ((actGalleon < payGalleon) || (actGalleon == payGalleon && actSickle < paySickle) || (actGalleon == payGalleon && actSickle == paySickle && actKnut < payKnut))
+	{
+		cout << "-";
+		swap(actGalleon, payGalleon);
+		swap(actSickle, paySickle);
+		swap(actKnut, payKnut);
+	}
+	
+	
+	if (actKnut >= payKnut)
+		finKnut = actKnut - payKnut;
+	else
+	{
+		actSickle--;
+		finKnut = actKnut + 29 - payKnut;
+	}
+
+	if (actSickle >= paySickle)
+		finSickle = actSickle - paySickle;
+	else
+	{
+		actGalleon--;
+		finSickle = actSickle + 17 - paySickle;
+	}
+	finGalleon = actGalleon - payGalleon;
+	
+	cout << finGalleon << "." << finSickle << "." << finKnut << '\n';
+	
+
+	system("pause");
+	return 0;
+}

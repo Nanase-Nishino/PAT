@@ -1,0 +1,77 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+int main()
+{
+	string s;
+	cin >> s;
+	string res;
+	if (s[0] == '-')
+		res += "-";
+	bool flag = false;
+	int k = 0;
+	k = s.find("E")+1;
+	if (s[k] == '+')
+		flag = true;
+	string temp(s, k+1);
+	stringstream ss;
+	ss << temp;
+	int x = 0;
+	ss >> x;
+
+	if (flag == true)
+	{
+		res += s[1];
+		int n = 0;
+		for (int i = 3; s[i] != 'E'; i++)
+			n++;
+		if (n == x)
+		{
+			for (int i = 3; s[i] != 'E'; i++)
+				res += s[i];
+		}
+		else if (n < x)
+		{
+			for (int i = 3; s[i] != 'E'; i++)
+				res += s[i];
+			for (int i = 0; i < x - n; i++)
+				res += "0";
+		}
+		else
+		{
+			for (int i = 3; i < 3 + x; i++)
+				res += s[i];
+			res += ".";
+			for (int i = 3 + x; s[i] != 'E'; i++)
+				res += s[i];
+		}
+	}
+
+	else
+	{
+		res += "0.";
+		for (int i = 0; i < x - 1; i++)
+			res += "0";
+		res += s[1];
+		for (int i = 3; s[i] != 'E'; i++)
+			res += s[i];
+	}
+	cout << res << '\n';
+
+
+	system("pause");
+	return 0;
+}

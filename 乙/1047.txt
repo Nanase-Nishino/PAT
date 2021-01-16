@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<iostream>
+#include<cctype>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+int main()
+{
+	//ios::sync_with_stdio(false);
+	int N;
+	scanf_s("%d", &N);
+	vector<int> v(1000, 0);
+	for (int i = 0; i < N; i++)
+	{
+		int num, per, grd;
+		scanf_s("%d-%d %d", &num, &per, &grd);
+		v[num] += grd;
+	}
+	for (int i=0;i<1000;i++)
+	{
+		if (v[i] == *max_element(v.begin(), v.end()))
+		{
+			printf("%d %d\n",i,v[i]);
+		}
+	}
+
+	
+	system("pause");
+	return 0;
+}

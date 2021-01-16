@@ -1,0 +1,44 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	
+	int N;
+	char x;
+	cin >> N >> x;
+	int y = (N + 1) / 2;
+
+	for (int i = 0; i < N; i++)
+		cout << x;
+	cout << '\n';
+	for (int i = 0; i < y - 2; i++)
+	{
+		cout << x;
+		for (int j = 0; j < N - 2; j++)
+			cout << " ";
+		cout << x << '\n';
+	}
+	for (int i = 0; i < N; i++)
+		cout << x;
+	cout << '\n';
+
+	system("pause");
+	return 0;
+}

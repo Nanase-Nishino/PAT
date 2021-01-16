@@ -1,0 +1,62 @@
+#include<cstdio>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+using namespace std;
+
+
+struct mooncake
+{
+	double sale;
+	double num;
+	double singalSale;
+};
+bool cmp(mooncake& a, mooncake& b)
+{
+	return a.singalSale > b.singalSale;
+}
+int main()
+{
+	double N, D;
+	double sum = 0.0;
+	cin >> N >> D;
+	vector<mooncake> v(N);
+	for (int i = 0; i < N; i++)
+		cin >> v[i].num;
+	for (int i = 0; i < N; i++)
+		cin >> v[i].sale;
+	for (int i = 0; i < N; i++)
+		v[i].singalSale = v[i].sale / v[i].num;
+
+	sort(v.begin(), v.end(), cmp);
+	for (int i = 0; i < N&&D>0; i++)
+	{
+		if (v[i].num < D)
+		{
+			sum += v[i].sale;
+			D -= v[i].num;
+		}
+		else if (v[i].num == D)
+		{
+			sum += v[i].sale;
+			break;
+		}
+		else
+		{
+			sum += ((D / v[i].num) * v[i].sale);
+			break;
+		}
+	}
+	cout <<fixed<< setprecision(2) << sum << '\n';
+	system("pause");
+	return 0;
+}

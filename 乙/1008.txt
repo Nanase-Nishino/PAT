@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<map>
+#include<algorithm>
+#include<set>
+using namespace std;
+
+//cmp
+/*bool cmp(int a, int b)
+{
+	return a > b;
+}
+*/
+
+//ÅÐ¶ÏËØÊý
+/*
+bool isprimenum(int x)
+{
+	int n = (int)sqrt((double)x);
+	for (int i = 2; i <= n; i++)
+		if (x % i == 0)
+			return false;
+	return true;
+}
+*/
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	if (m > n)
+		m = m - n;
+	vector<int> v(n+m);
+	for (int i=m;i<n+m;i++)
+	{
+		int x;
+		cin >> x;
+		v[i] = x;
+	}
+	for (int i = n; i < n + m; i++)
+	{
+		int temp = v[i];
+		v[i - n] = temp;
+	}
+	for (int i = 0; i < n - 1; i++)
+		cout << v[i] << " ";
+	cout << v[n-1];
+	system("pause");
+	return 0;
+}

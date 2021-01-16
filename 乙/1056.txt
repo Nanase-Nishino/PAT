@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<iostream>
+#include<assert.h>
+#include<cmath>
+#include<bitset>
+#include<cstring>
+#include<sstream>
+#include<vector>
+#include<array>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<algorithm>
+#include<set>
+#include<unordered_set>
+#include<iomanip>//小数点精确
+#define ll long long
+#define inf 0x3f3f3f3f
+using namespace std;
+
+
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int N;
+	cin >> N;
+	vector<int> num(N);
+	for (int i = 0; i < N; i++)
+		cin >> num[i];
+	int sum = 0;
+	for(int i=0;i<N;i++)
+		for (int j = 0; j < N; j++)
+		{
+			if (i == j)
+				continue;
+			sum += num[i] * 10 + num[j];
+		}
+	cout << sum << '\n';
+
+	system("pause");
+	return 0;
+}
